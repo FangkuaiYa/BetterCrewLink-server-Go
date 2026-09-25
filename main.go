@@ -685,7 +685,7 @@ func getHomeHTML(address string) string {
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>BetterCrewLink Server</title>
 <link rel="stylesheet" href="/public/styles.css">
-<link rel="icon" type="image/png" href="/public/logo-big.png">
+<link rel="icon" type="image/x-icon" href="/public/icon.ico">
 </head>
 <body>
 <canvas id="stars"></canvas>
