@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9736:9736"
+    environment:
+      - PORT=9736
+      - HOSTNAME=localhost
+      - NAME=BetterCrewLink Server
+    volumes:
+      - ./config:/root/config
+    restart: unless-stopped

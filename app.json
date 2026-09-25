@@ -1,7 +1,7 @@
 {
-  "name": "BetterCrewlink Server",
-  "description": "Voice Relay server for CrewLink",
-  "repository": "https://github.com/ottomated/CrewLink-server",
-  "logo": "https://github.com/ottomated/CrewLink-server/raw/master/logo.png",
-  "keywords": ["node", "among us"]
+  "name": "BetterCrewLink Server",
+  "description": "Voice Relay server for BetterCrewLink",
+  "repository": "https://github.com/OhMyGuus/BetterCrewLink-server",
+  "logo": "https://github.com/OhMyGuus/BetterCrewLink-server/raw/master/logo.png",
+  "keywords": ["go", "among us", "voice", "crewlink"]
 }

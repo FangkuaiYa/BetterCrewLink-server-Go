@@ -1,34 +1,15 @@
-#################################################
-# Common base image
-#################################################
-FROM node:14-alpine as common
-RUN mkdir /app && chown node:node /app
+FROM golang:1.21-alpine AS builder
 WORKDIR /app
-USER node
+COPY go.mod ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 go build -o server -ldflags="-s -w" .
 
-# Cache node_modules installation as they change
-# less than code over time.
-COPY package.json yarn.lock tsconfig.json ./
-RUN yarn install --production && \
-    rm -rf ~/.cache /tmp/v8-compile-cache-1000
-
-#################################################
-# Compile stage
-#################################################
-FROM common as build
-RUN yarn install
-COPY src/ src/
-RUN yarn compile
-
-#################################################
-# Production stage
-#################################################
-FROM common
-COPY views/ views/
-# It's a toss up on which order offsets and src
-# should be. Offsets are gauranteed to change
-# over time, but src has more changes in `git log`.
+FROM alpine:3.19
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+COPY --from=builder /app/server .
 COPY public/ public/
-COPY --from=build /app/dist/ dist
+COPY config/ config/
 EXPOSE 9736
-CMD ["node", "dist/index.js"]
+CMD ["./server"]

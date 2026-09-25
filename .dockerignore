@@ -1,0 +1,16 @@
+.git
+.gitignore
+node_modules
+dist
+src
+types
+views
+*.ts
+*.tsx
+go.zip
+go3
+go3.zip
+*.zip
+server.exe
+go.sum
+settings.png
